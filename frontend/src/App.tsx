@@ -33,6 +33,8 @@ const createInitialGrid = (): Cell[][] => {
 };
 
 function App() {
+  const [abortController, setAbortController] = useState(new AbortController());
+
   const [grid, setGrid] = useState<Cell[][]>(createInitialGrid());
   const [startNode, setStartNode] = useState<NodeState>({ row: 0, col: 0, set: false });
   const [endNode, setEndNode] = useState<NodeState>({ row: gridSize - 1, col: gridSize - 1, set: false });
@@ -84,11 +86,15 @@ function App() {
     return [];
   };
   const resetGrid = () => {
-    setGrid(createInitialGrid()); // Reset grid to initial state
-    setStartNode({ row: 0, col: 0, set: false }); // Reset start node state
-    setEndNode({ row: gridSize - 1, col: gridSize - 1, set: false }); // Reset end node state
-    // If you have other states related to the visualization, reset them here as well
+    abortController.abort(); // Signal to abort any ongoing search
+    setGrid(createInitialGrid());
+    setStartNode({ row: 0, col: 0, set: false });
+    setEndNode({ row: gridSize - 1, col: gridSize - 1, set: false });
+    // Reset the AbortController
+    setAbortController(new AbortController());
+    // Any other cleanup
   };
+
   
   const visualizePath = (path: Cell[]) => {
     const newGrid = grid.map(row => row.map(cell => ({ ...cell, isPath: false }))); // Reset isPath for all cells
@@ -99,11 +105,15 @@ function App() {
     }
     setGrid(newGrid);
   };
-  const visualizeDFS = async (start: NodeState, end: NodeState) => {
+  const visualizeDFS = async (start: NodeState, end: NodeState,signal: AbortSignal) => {
     let visited = Array(gridSize).fill(null).map(() => Array(gridSize).fill(false));
     let found = false; // Flag to stop once end is found
   
     const dfs = async (row: number, col: number, path: Cell[] = []) => {
+      if (signal.aborted) {
+        console.log("Search aborted!");
+        return;
+      }
       if (row < 0 || col < 0 || row >= gridSize || col >= gridSize || visited[row][col] || grid[row][col].isObstruction || found) {
         return;
       }
@@ -135,12 +145,17 @@ function App() {
   };
   
 // Pseudo-code for BFS visualization
-const visualizeBFS = async (start: NodeState, end: NodeState) => {
+const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSignal) => {
   let queue = [{ cell: grid[start.row][start.col], path: [grid[start.row][start.col]] }];
   let visited = Array(gridSize).fill(null).map(() => Array(gridSize).fill(false));
   visited[start.row][start.col] = true;
 
   while (queue.length > 0) {
+    if (signal.aborted) {
+      console.log("Search aborted!");
+      return;
+    }
+
     let { cell, path } = queue.shift()!;
 
     // Visualize current cell as visited
@@ -182,10 +197,10 @@ const visualizeBFS = async (start: NodeState, end: NodeState) => {
 
       <div className="grid">
       <div className="button-container">
-  <Button variant="contained" color="primary" onClick={() => visualizeBFS(startNode, endNode)}>
+  <Button variant="contained" color="primary" onClick={() => visualizeBFS(startNode, endNode,abortController.signal)}>
     Find Path BFS
   </Button>
-  <Button variant="contained" color="secondary" onClick={() => visualizeDFS(startNode, endNode)}>
+  <Button variant="contained" color="secondary" onClick={() => visualizeDFS(startNode, endNode, abortController.signal)}>
     Visualize DFS
   </Button>
   <Button variant="contained" onClick={resetGrid}>
