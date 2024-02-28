@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Button from '@mui/material/Button';
 
 const gridSize = 20;
 
@@ -180,9 +181,18 @@ const visualizeBFS = async (start: NodeState, end: NodeState) => {
 
 
       <div className="grid">
-      <button onClick={() => visualizeBFS(startNode, endNode)}>Find Path</button>
-    <button onClick={() => visualizeDFS(startNode, endNode)}>Visualize DFS</button>
-    <button onClick={resetGrid}>Reset Board</button>
+      <div className="button-container">
+  <Button variant="contained" color="primary" onClick={() => visualizeBFS(startNode, endNode)}>
+    Find Path BFS
+  </Button>
+  <Button variant="contained" color="secondary" onClick={() => visualizeDFS(startNode, endNode)}>
+    Visualize DFS
+  </Button>
+  <Button variant="contained" onClick={resetGrid}>
+    Reset Board
+  </Button>
+</div>
+
         {grid.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, cellIndex) => (
