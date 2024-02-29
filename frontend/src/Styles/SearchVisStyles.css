@@ -10,7 +10,7 @@
   /* SearchVisualization.css */
 .searchVisualizationContainer {
     width: 100vw;
-    height: 100vh;
+
     background-color: #f0f9ff; /* Light blue background */
     display: flex;
     justify-content: center;

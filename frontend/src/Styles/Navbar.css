@@ -1,26 +1,27 @@
-/* Add a specific class to the navbar or style it directly if it's the only nav */
+/* Enhanced navbar styles with colors */
 .navbar {
-  display: flex;
-  justify-content: center; /* Center navbar items horizontally */
-  width: 100%; /* Ensure the navbar takes full width */
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: absolute; /* Position it absolutely relative to the sortingVisualizationContainer */
-  top: 0; /* Stick to the top */
-  left: 0;
-}
-
-/* Ensure the ul within the navbar takes the full width */
-.navbar ul {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-around; /* This will space out the navbar items evenly */
-  list-style: none;
-}
-
-/* Adjust navbar items if needed */
-.navbar-item {
-  margin: 0; /* Adjust as needed */
-}
+    display: flex;
+    justify-content: center; /* Center navbar items horizontally */
+    width: 100%; /* Ensure the navbar takes full width */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow for depth */
+    position: absolute; /* Position it absolutely relative to the parent container */
+    top: 0; /* Stick to the top */
+    left: 0;
+    background-color: #007bff; /* A vibrant blue background */
+    color: #ffffff; /* White text for contrast */
+  }
+  
+  .navbar-item {
+    margin: 0 10px; /* Adds some spacing between navbar items */
+  }
+  
+  .Button {
+    color: #ffffff !important; /* Ensures text color is white */
+  }
+  
+  /* If using Material UI, you might need to target the MUI Button specifically for text color */
+  .MuiButton-text {
+    color: #ffffff !important; /* Override Material UI Button text color */
+  }
+  

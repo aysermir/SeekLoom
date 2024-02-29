@@ -191,8 +191,8 @@ const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSigna
     visualizePath(path);
   };
   const sortingAlgorithms = [
-    { name: 'BFS', description: ' (BFS) systematically explores all neighboring nodes level by level, making it optimal for finding the shortest path in unweighted graphs.' },
-    { name: 'DFS', description: '(DFS) is an algorithm that explores as deep as possible along each branch before backtracking, ideal for maze solving and puzzle games.' }, ];
+    { name: 'DFS', description: 'Depth-First Search (DFS) is a fundamental search algorithm used in graph theory to traverse or search through a graph in a manner that prioritizes visiting the depth of the graph as far as possible before backtracking to explore other branches. The DFS algorithm explores a path from a starting node until it reaches the end of a branch, then it backtracks and explores other branches through other nodes until the entire graph has been explored. This method is particularly useful in scenarios where the complete traversal of a graph is required, to find all nodes connected to a given node or to search for a specific node. DFS can be implemented using recursion or with a stack, allowing it to dive deep into a graph along a single path, which makes it efficient for tasks that require thorough examination of all possible paths to find a solution.' },
+    { name: 'BFS', description: 'Breadth-First Search (BFS), on the other hand, takes a different approach by exploring all the neighbor nodes at the current depth level before moving on to the nodes at the next depth level. This algorithm uses a queue to keep track of the nodes that need to be explored next. BFS starts at a specific node and explores all the neighboring nodes first before moving to the next level of neighbors. This way, BFS systematically visits nodes in order of their distance from the start node, layer by layer. It is particularly efficient for finding the shortest path on unweighted graphs because it guarantees that when a node is explored, the path to that node is the shortest one. BFS is widely used in algorithms that need to cover all nodes in a graph systematically, such as finding the shortest path, navigating between nodes in a network, or algorithms related to puzzle solving where the solution is closest to the start point.' }, ];
   return (
     <div className="searchVisualizationContainer">
       <div className="grid">
@@ -219,13 +219,13 @@ const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSigna
     Reset Board
   </Button>
 </div>
-
-      </div>
-      <div className="flashcardsContainer">
+<div className="flashcardsContainer">
         {sortingAlgorithms.map((algo, index) => (
           <FlashCard key={index} title={algo.name} description={algo.description} />
         ))}
       </div>
+      </div>
+
     </div>
 
   );
