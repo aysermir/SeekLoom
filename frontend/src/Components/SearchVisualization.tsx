@@ -192,6 +192,7 @@ const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSigna
   };
 
   return (
+    <div className="searchVisualizationContainer">
     <div className="App">
 
 
@@ -221,6 +222,7 @@ const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSigna
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

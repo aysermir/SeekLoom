@@ -1,4 +1,12 @@
 /* App.css */
+body, html, #root, .App {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .grid {
   display: flex;
   flex-direction: column; /* Ensures rows stack vertically */

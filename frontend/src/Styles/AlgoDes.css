@@ -1,0 +1,21 @@
+.descriptionsContainer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .algorithm-description h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .algorithm-description p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .algorithm-description pre {
+    background: #eee;
+    padding: 10px;
+    overflow: auto;
+  }
+  

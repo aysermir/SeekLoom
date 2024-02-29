@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/SortingVisStyles.css';
 import Button from '@mui/material/Button';
+import AlgorithmDescription from './AlgorithmDescription'
+
 interface Bar {
   height: number;
   color: string;
@@ -143,7 +145,7 @@ function SortingVisualization() {
   };
 
   return (
-    <div>
+    <div className="sortingVisualizationContainer">
       <div className="barsContainer">
         {bars.map((bar, index) => (
           <div
@@ -160,6 +162,17 @@ function SortingVisualization() {
         <Button variant="contained" onClick={startMergeSort}>Start Merge Sort</Button>
         <Button variant="contained" onClick={startQuickSort}>Start Quick Sort</Button>
         <Button variant="contained" onClick={selectionSort}>Start Selection Sort</Button>
+      </div>
+      <div className="descriptionsContainer">
+        <AlgorithmDescription
+          name="Bubble Sort"
+          description="A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order."
+          pseudocode={`for i = 1 to n-1
+  for j = 0 to n-i-1
+    if arr[j] > arr[j+1]
+      swap(arr[j], arr[j+1])`}
+        />
+        {/* ...other descriptions... */}
       </div>
     </div>
   );

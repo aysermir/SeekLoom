@@ -1,12 +1,5 @@
 /* This styles the outer container */
-body, html, #root, .App {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+
   
   .barsContainer {
     display: flex;
@@ -31,4 +24,16 @@ body, html, #root, .App {
   }
   
 
+/* SortingVisualization.css */
+.sortingVisualizationContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff0f0;
+    margin: 0;
+    padding: 0;
+  }
   
