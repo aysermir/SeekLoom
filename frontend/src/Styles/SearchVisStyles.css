@@ -1,0 +1,41 @@
+/* App.css */
+.grid {
+    display: flex;
+    flex-direction: column; /* Ensures rows stack vertically */
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* Adds vertical space around the grid */
+  }
+  
+  
+  
+  .row {
+    display: flex;
+  }
+  
+  .cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    display: inline-block;
+  }
+  .visited {
+    background-color: #f0e68c; /* Khaki; adjust as needed */
+  }
+  
+  /* Add colors for start, end, and obstruction cells */
+  .start {
+    background-color: green; /* Color for the start cell */
+  }
+  
+  .end {
+    background-color: red; /* Color for the end cell */
+  }
+  
+  .obstruction {
+    background-color: black; /* Color for obstruction cells */
+  }
+  .path {
+    background-color: purple; /* Color for the path cells */
+  }
+  
