@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Styles/SearchVisStyles.css';
 import Button from '@mui/material/Button';
-
+import FlashCard from './Flashcard'
 const gridSize = 20;
 
 interface Cell {
@@ -190,25 +190,12 @@ const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSigna
     const path = findPathBFS(grid, startNode, endNode);
     visualizePath(path);
   };
-
+  const sortingAlgorithms = [
+    { name: 'BFS', description: ' (BFS) systematically explores all neighboring nodes level by level, making it optimal for finding the shortest path in unweighted graphs.' },
+    { name: 'DFS', description: '(DFS) is an algorithm that explores as deep as possible along each branch before backtracking, ideal for maze solving and puzzle games.' }, ];
   return (
     <div className="searchVisualizationContainer">
-    <div className="App">
-
-
       <div className="grid">
-      <div className="button-container">
-  <Button variant="contained" color="primary" onClick={() => visualizeBFS(startNode, endNode,abortController.signal)}>
-    Find Path BFS
-  </Button>
-  <Button variant="contained" color="secondary" onClick={() => visualizeDFS(startNode, endNode, abortController.signal)}>
-    Visualize DFS
-  </Button>
-  <Button variant="contained" onClick={resetGrid}>
-    Reset Board
-  </Button>
-</div>
-
         {grid.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, cellIndex) => (
@@ -221,9 +208,26 @@ const visualizeBFS = async (start: NodeState, end: NodeState, signal: AbortSigna
             ))}
           </div>
         ))}
+              <div className="button-container">
+  <Button variant="contained" color="primary" onClick={() => visualizeBFS(startNode, endNode,abortController.signal)}>
+    Visualize BFS
+  </Button>
+  <Button variant="contained" color="primary" onClick={() => visualizeDFS(startNode, endNode, abortController.signal)}>
+    Visualize DFS
+  </Button>
+  <Button variant="contained" color="secondary" onClick={resetGrid}>
+    Reset Board
+  </Button>
+</div>
+
+      </div>
+      <div className="flashcardsContainer">
+        {sortingAlgorithms.map((algo, index) => (
+          <FlashCard key={index} title={algo.name} description={algo.description} />
+        ))}
       </div>
     </div>
-    </div>
+
   );
 }
 

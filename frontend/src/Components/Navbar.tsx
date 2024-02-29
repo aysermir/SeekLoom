@@ -8,7 +8,7 @@ function Navbar() {
         <div className="navbar-item">
           {/* Use Material UI Button as a Link */}
           <Button component={Link} to="/grid-visualization" color="inherit" variant="text">
-            Grid Visualization
+            Search Visualization
           </Button>
         </div>
         <div className="navbar-item">

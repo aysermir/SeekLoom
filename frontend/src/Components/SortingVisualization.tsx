@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/SortingVisStyles.css';
 import Button from '@mui/material/Button';
-import AlgorithmDescription from './AlgorithmDescription'
-
+import FlashCard from './Flashcard'
 interface Bar {
   height: number;
   color: string;
@@ -139,6 +138,13 @@ function SortingVisualization() {
 
     return result;
   };
+  const sortingAlgorithms = [
+    { name: 'Bubble Sort', description: 'A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.' },
+    { name: 'Insertion Sort', description: 'Builds the final sorted array one item at a time, with the advantage of being efficient for (nearly) sorted data.' },
+    { name: 'Merge Sort', description: 'A divide and conquer algorithm that divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.' },
+    { name: 'Quick Sort', description: 'An efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order.' },
+    { name: 'Selection Sort', description: 'Sorts an array by repeatedly finding the minimum element from unsorted part and putting it at the beginning.' }
+  ];
 
   const startMergeSort = async () => {
     await mergeSort();
@@ -156,23 +162,17 @@ function SortingVisualization() {
         ))}
       </div>
       <div className="buttonsContainer">
-        <Button variant="contained" color="primary" onClick={resetBars}>Reset Bars</Button>
-        <Button variant="contained" color="primary" onClick={() => bubbleSort()}>Start Bubble Sort</Button>
+        <Button variant="contained" color="secondary" onClick={resetBars}>Reset Bars</Button>
+        <Button variant="contained" onClick={() => bubbleSort()}>Start Bubble Sort</Button>
         <Button variant="contained" onClick={() => insertionSort()}>Start Insertion Sort</Button>
         <Button variant="contained" onClick={startMergeSort}>Start Merge Sort</Button>
         <Button variant="contained" onClick={startQuickSort}>Start Quick Sort</Button>
         <Button variant="contained" onClick={selectionSort}>Start Selection Sort</Button>
       </div>
-      <div className="descriptionsContainer">
-        <AlgorithmDescription
-          name="Bubble Sort"
-          description="A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order."
-          pseudocode={`for i = 1 to n-1
-  for j = 0 to n-i-1
-    if arr[j] > arr[j+1]
-      swap(arr[j], arr[j+1])`}
-        />
-        {/* ...other descriptions... */}
+      <div className="flashcardsContainer">
+        {sortingAlgorithms.map((algo, index) => (
+          <FlashCard key={index} title={algo.name} description={algo.description} />
+        ))}
       </div>
     </div>
   );

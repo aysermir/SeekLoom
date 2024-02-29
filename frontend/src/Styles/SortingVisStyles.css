@@ -1,39 +1,38 @@
 /* This styles the outer container */
 
-  
-  .barsContainer {
-    display: flex;
-    justify-content: center; /* Center bars horizontally */
-    align-items: flex-end; /* Align bars to the bottom */
-    height: 50vh; /* Adjust based on your preference */
-    width: 80%; /* Adjust based on your preference */
-    margin-bottom: 20px; /* Space between bars and buttons */
-  }
-  
-  .bar {
-    width: 20px; /* Width of each bar */
-    margin: 0 2px; /* Spacing between bars */
-    background-color: blue; /* Color of bars */
-        transition: height 0.2s ease-out, background-color 0.2s ease-out;
-  }
-  
-  .buttonsContainer {
-    display: flex;
-    justify-content: center; /* Center buttons horizontally */
-    gap: 10px; /* Spacing between buttons */
-  }
-  
+
+.barsContainer {
+display: flex;
+justify-content: center; /* Center bars horizontally */
+align-items: flex-end; /* Align bars to the bottom */
+height: 50vh; /* Adjust based on your preference */
+width: 80%; /* Adjust based on your preference */
+margin-bottom: 20px; /* Space between bars and buttons */
+}
+
+.bar {
+width: 20px; /* Width of each bar */
+margin: 0 2px; /* Spacing between bars */
+background-color: blue; /* Color of bars */
+    transition: height 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+.buttonsContainer {
+display: flex;
+justify-content: center; /* Center buttons horizontally */
+gap: 2px; /* Spacing between buttons */
+}
+
 
 /* SortingVisualization.css */
 .sortingVisualizationContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    width: 100vw;
-    height: 100vh;
-    background-color: #fff0f0;
-    margin: 0;
-    padding: 0;
-  }
-  
+display: flex;
+flex-direction: column;
+justify-content: center; /* Center content vertically */
+align-items: center; /* Center content horizontally */
+width: 100vw;
+height: 150vh;
+background-color: #fff0f0;
+margin: 0;
+padding: 0;
+}
